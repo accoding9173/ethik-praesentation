@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ethik-Präsentation: KI</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; color: #fff; overflow: hidden;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; cursor: pointer; user-select: none; }
+  .slide { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; padding: 5vw; box-sizing: border-box;
+    opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility .6s; }
+  .slide.active { opacity: 1; visibility: visible; }
+
+  h1 { font-size: 5.5vw; font-weight: 700; margin: 0; letter-spacing: -.01em; }
+  .sub { font-size: 2.4vw; color: #aaa; margin-top: 2.5vw; letter-spacing: .3em; text-transform: uppercase; }
+
+  video { width: 90vw; height: 85vh; object-fit: contain; }
+
+  .artikel { width: 85vw; max-height: 70vh; object-fit: contain; border-radius: 12px; box-shadow: 0 0 0 1px #333; }
+
+  .frage { font-size: 4.2vw; font-weight: 700; line-height: 1.25; max-width: 80vw; margin: 0; }
+  .label { font-size: 1.6vw; color: #888; letter-spacing: .3em; text-transform: uppercase; margin-bottom: 3vw; }
+
+  .quelle { position: absolute; bottom: 2vh; left: 0; right: 0; font-size: .9vw; color: #666; }
+  #nr { position: fixed; bottom: 2vh; right: 2vw; font-size: .9vw; color: #444; }
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <h1>Vortrag über ein ethisches Thema</h1>
+  <div class="sub">Religion</div>
+</section>
+
+<section class="slide">
+  <video src="spaghetti.mp4" muted playsinline preload="auto"></video>
+  <div class="quelle">Quelle: „Comparison AI of Will Smith eating spaghetti“, r/GenAI4all, reddit.com/r/GenAI4all/comments/1r3lxux</div>
+</section>
+
+<section class="slide">
+  <img class="artikel" src="artikel.png" alt="Artikel: Anthropic-Chef Amodei will das Tempo der KI-Entwicklung drosseln">
+  <div class="quelle">Quelle: skill-sprinters.de, „Anthropic-Chef Amodei will das Tempo der KI-Entwicklung drosseln und holt dafür externe Prüfer ins Haus“, 13.09.2026</div>
+</section>
+
+<section class="slide">
+  <div class="label">Die Grundfrage</div>
+  <p class="frage">Sollte die Entwicklung immer stärkerer KI gebremst werden?</p>
+</section>
+
+<div id="nr"></div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const nr = document.getElementById('nr');
+  let cur = 0;
+
+  function show(i) {
+    slides[cur].classList.remove('active');
+    const oldVid = slides[cur].querySelector('video');
+    if (oldVid) { oldVid.pause(); oldVid.currentTime = 0; }
+
+    cur = (i + slides.length) % slides.length; // nach der letzten Folie wieder von vorne
+    slides[cur].classList.add('active');
+    const vid = slides[cur].querySelector('video');
+    if (vid) { vid.currentTime = 0; vid.play(); }
+    nr.textContent = (cur + 1) + ' / ' + slides.length;
+  }
+
+  document.addEventListener('click', () => show(cur + 1));
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', ' ', 'PageDown', 'Enter'].includes(e.key)) show(cur + 1);
+    if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) show(cur - 1);
+    if (e.key === 'f') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  });
+
+  show(0);
+</script>
+</body>
+</html>
