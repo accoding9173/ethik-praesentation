@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ethik-Präsentation: KI</title>
+<title>Ethik-Präsentation: KI bremsen?</title>
 <style>
   html, body { margin: 0; height: 100%; background: #000; color: #fff; overflow: hidden;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; cursor: pointer; user-select: none; }
@@ -13,14 +13,41 @@
   .slide.active { opacity: 1; visibility: visible; }
 
   h1 { font-size: 5.5vw; font-weight: 700; margin: 0; letter-spacing: -.01em; }
+  h2 { font-size: 3.4vw; font-weight: 700; margin: 0 0 2.5vw; }
   .sub { font-size: 2.4vw; color: #aaa; margin-top: 2.5vw; letter-spacing: .3em; text-transform: uppercase; }
+  .label { font-size: 1.4vw; color: #888; letter-spacing: .3em; text-transform: uppercase; margin-bottom: 1.5vw; }
 
   video { width: 90vw; height: 85vh; object-fit: contain; }
-
   .artikel { width: 85vw; max-height: 70vh; object-fit: contain; border-radius: 12px; box-shadow: 0 0 0 1px #333; }
 
-  .frage { font-size: 4.2vw; font-weight: 700; line-height: 1.25; max-width: 80vw; margin: 0; }
-  .label { font-size: 1.6vw; color: #888; letter-spacing: .3em; text-transform: uppercase; margin-bottom: 3vw; }
+  .frage { font-size: 4vw; font-weight: 700; line-height: 1.25; max-width: 80vw; margin: 0 0 3vw; }
+
+  /* Stichpunkt-Folien */
+  .inhalt { width: 100%; max-width: 75vw; text-align: left; }
+  ul { margin: 0; padding-left: 1.2em; font-size: 1.9vw; line-height: 1.5; }
+  li { margin-bottom: .6vw; }
+  li b { color: #fff; }
+  li { color: #ccc; }
+  .zitat { margin-top: 2vw; padding-left: 1.5vw; border-left: 3px solid #fff; font-size: 1.7vw;
+    font-style: italic; color: #fff; }
+  .zitat span { display: block; font-style: normal; font-size: 1.1vw; color: #888; margin-top: .5vw; }
+
+  /* Wertekonflikt */
+  .waage { display: flex; gap: 3vw; justify-content: center; width: 100%; max-width: 75vw; }
+  .seite { flex: 1; border: 1px solid #444; border-radius: 12px; padding: 2vw; text-align: left; }
+  .seite h3 { margin: 0 0 1vw; font-size: 2vw; }
+  .seite ul { font-size: 1.6vw; }
+  .kern { margin-top: 2.5vw; font-size: 1.8vw; color: #ddd; }
+
+  /* Balken Risikokapital */
+  .balken { margin-top: 2vw; font-size: 1.3vw; color: #aaa; }
+  .zeile { display: flex; align-items: center; gap: 1vw; margin: .6vw 0; }
+  .zeile .name { width: 6vw; }
+  .zeile .bar { height: 1.6vw; background: #fff; }
+  .zeile .bar.eu { background: #3b6fe0; }
+
+  .quellen { font-size: 1.05vw; line-height: 1.6; color: #bbb; text-align: left; max-width: 80vw;
+    padding-left: 1.2em; }
 
   .quelle { position: absolute; bottom: 2vh; left: 0; right: 0; font-size: .9vw; color: #666; }
   #nr { position: fixed; bottom: 2vh; right: 2vw; font-size: .9vw; color: #444; }
@@ -44,8 +71,108 @@
 </section>
 
 <section class="slide">
+  <div class="inhalt">
+    <div class="label">Aktuelle Relevanz</div>
+    <h2>„We Must Pace the Frontier“</h2>
+    <ul>
+      <li><b>12.09.2026:</b> Anthropic-Chef Dario Amodei fordert, die KI-Entwicklung zu bremsen</li>
+      <li>Kein Stopp, aber die Fähigkeiten der stärksten Modelle sollen <b>langsamer</b> wachsen</li>
+      <li>Plan: <b>externe Prüfer</b> in den Firmen, <b>Gesetze</b> für alle KI-Firmen, <b>weltweite Absprachen</b> (auch mit China)</li>
+      <li>OpenAI, xAI (Musk) und Microsoft stimmen zu</li>
+      <li><b>Aber:</b> Nur 10 Tage später bringen Anthropic und OpenAI neue Top-Modelle heraus</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide">
   <div class="label">Die Grundfrage</div>
   <p class="frage">Sollte die Entwicklung immer stärkerer KI gebremst werden?</p>
+  <div class="waage">
+    <div class="seite">
+      <h3>Vollgas</h3>
+      <ul>
+        <li>Fortschritt (Medizin, Forschung)</li>
+        <li>Wohlstand und Wettbewerb</li>
+        <li>„Sonst baut es China“</li>
+      </ul>
+    </div>
+    <div class="seite">
+      <h3>Bremsen</h3>
+      <ul>
+        <li>Sicherheit und Kontrolle</li>
+        <li>Verantwortung für die Zukunft</li>
+        <li>Folgen sind nicht umkehrbar</li>
+      </ul>
+    </div>
+  </div>
+  <div class="kern">Problem: Wenige Firmen entscheiden über ein Risiko, das <b>alle</b> betrifft.</div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Position 1: Wirtschaft</div>
+    <h2>„Ja, bremsen, aber nicht stoppen“</h2>
+    <ul>
+      <li>Die großen KI-Firmen (Anthropic, OpenAI, Microsoft) unterstützen den Plan</li>
+      <li>Anthropic lässt als Erstes <b>externe Prüfer</b> ins Haus</li>
+      <li><b>Kritik:</b> Beide Firmen bringen weiter neue Modelle heraus und planen ihren Börsengang</li>
+      <li><b>Werte:</b> Sicherheit, aber auch Marktmacht</li>
+    </ul>
+    <div class="zitat">„Wenn wir von ‚Pacing‘ sprechen, meinen wir nicht ‚Stoppen‘.“
+      <span>Sam Altman, CEO von OpenAI (übersetzt)</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Position 2: Politik (USA)</div>
+    <h2>„Keine Gesetze, das ist nur Taktik“</h2>
+    <ul>
+      <li><b>Trump</b> lehnt Regulierung ab und greift Amodei öffentlich an</li>
+      <li>KI-Berater <b>David Sacks:</b> Die Firmen sollen selbst bremsen, statt nach Gesetzen zu rufen</li>
+      <li>Vorwurf <b>„Regulatory Capture“</b>: Große Firmen wollen Regeln, die nur sie erfüllen können</li>
+      <li>China würde sowieso nicht mitmachen</li>
+      <li><b>Werte:</b> Freiheit, Wettbewerb, nationale Stärke</li>
+    </ul>
+    <div class="zitat">„Hört auf so zu tun, als wäre der Wunsch zu bremsen rein selbstlos.“
+      <span>David Sacks, KI-Berater des Weißen Hauses (übersetzt)</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Position 3: Europa</div>
+    <h2>„Erst aufholen, dann bremsen“</h2>
+    <ul>
+      <li>Europa hat <b>keine echten Frontier-Modelle</b>, nur Firmen wie Mistral (FR) und Black Forest Labs (DE)</li>
+      <li>Ziel: erst einmal <b>gute eigene Modelle</b> bauen</li>
+      <li>Eine Bremse jetzt würde den <b>Vorsprung von USA und China festschreiben</b></li>
+      <li><b>Werte:</b> Gerechtigkeit, Chancengleichheit, Unabhängigkeit</li>
+    </ul>
+    <div class="zitat">„Einige etablierte Firmen nutzen diesen Moment, um ihre Marktposition zu festigen.“
+      <span>Mistral AI (übersetzt)</span></div>
+    <div class="balken">Anteil am weltweiten KI-Risikokapital (2023):
+      <div class="zeile"><span class="name">USA</span><div class="bar" style="width:38.5vw"></div>77 %</div>
+      <div class="zeile"><span class="name">Europa</span><div class="bar eu" style="width:5.5vw"></div>11 %</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Quellen</div>
+    <ol class="quellen">
+      <li>Reddit, r/GenAI4all: „Comparison AI of Will Smith eating spaghetti“ – reddit.com/r/GenAI4all/comments/1r3lxux</li>
+      <li>skill-sprinters.de: „Anthropic-Chef Amodei will das Tempo der KI-Entwicklung drosseln …“, 13.09.2026</li>
+      <li>Dario Amodei: „We Must Pace the Frontier“, 12.09.2026 – darioamodei.com/post/we-must-pace-the-frontier</li>
+      <li>The Register: „Frontier AI keeps racing despite calls to slow down“, 23.09.2026</li>
+      <li>MarkTechPost: „Anthropic's 3-Step 'Pace the Frontier' Plan Wins OpenAI, xAI and Microsoft Support“, 13.09.2026</li>
+      <li>CNBC: „Trump rejects AI regulation calls, slams Anthropic CEO Dario Amodei“, 14.09.2026</li>
+      <li>Dealroom: „David Sacks to Altman and Amodei: pace the frontier yourselves“</li>
+      <li>Reuters/Investing.com: „Europe's AI firms, playing catch-up, challenge US calls for slowdown“</li>
+      <li>Cryptopolitan: „Europe's AI firms warn a frontier slowdown would lock in the US lead“</li>
+    </ol>
+  </div>
 </section>
 
 <div id="nr"></div>
