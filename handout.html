@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Handout: KI bremsen?</title>
+<style>
+  /* A4 quer mit zwei A5-Handouts nebeneinander, nach dem Drucken in der Mitte durchschneiden */
+  @page { size: A4 landscape; margin: 0; }
+  html, body { margin: 0; background: #ddd; color: #000;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .blatt { width: 297mm; height: 210mm; margin: 10mm auto; background: #fff; display: flex;
+    box-shadow: 0 2px 12px rgba(0,0,0,.2); }
+  .handout { width: 148.5mm; height: 210mm; box-sizing: border-box; padding: 11mm 12mm;
+    display: flex; flex-direction: column; font-size: 9.5pt; line-height: 1.4; }
+  .handout + .handout { border-left: 1px dashed #999; }
+
+  .kopf { display: flex; justify-content: space-between; font-size: 8pt; color: #555;
+    border-bottom: 1.5px solid #000; padding-bottom: 2mm; }
+  h1 { font-size: 15pt; margin: 4mm 0 1mm; }
+  .frage { font-size: 11.5pt; font-weight: 700; margin: 3mm 0 0; padding: 3mm 4mm;
+    border: 1.5px solid #000; border-radius: 2mm; }
+  h2 { font-size: 10.5pt; margin: 5mm 0 1.5mm; text-transform: uppercase; letter-spacing: .08em; }
+  dl { margin: 0; }
+  dt { font-weight: 700; }
+  dd { margin: 0 0 1.5mm; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+  th, td { border: 1px solid #000; padding: 1.5mm 2mm; text-align: left; vertical-align: top; }
+  th { background: #eee; }
+
+  .meinung { padding: 3mm 4mm; background: #f0f0f0; border-radius: 2mm; }
+  .quellen { margin-top: auto; font-size: 7pt; color: #444; padding-top: 3mm; }
+  .quellen ol { margin: 1mm 0 0; padding-left: 4mm; }
+
+  @media print {
+    html, body { background: #fff; }
+    .blatt { margin: 0; box-shadow: none; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="blatt"></div>
+
+<template id="vorlage">
+  <div class="handout">
+    <div class="kopf"><span>Religion – Referat</span><span>Namen: ______________________</span></div>
+    <h1>KI bremsen?</h1>
+    <div class="frage">Sollte die Entwicklung immer stärkerer KI gebremst werden?</div>
+
+    <h2>Begriffe</h2>
+    <dl>
+      <dt>Frontier-Modell</dt>
+      <dd>eines der stärksten KI-Modelle an der Spitze der Entwicklung (z. B. von OpenAI, Anthropic, Google)</dd>
+      <dt>Pacing („Pace the Frontier“)</dt>
+      <dd>das Entwicklungstempo drosseln, ohne ganz zu stoppen; gefordert von Anthropic-Chef Dario Amodei am 12.09.2026</dd>
+      <dt>Regulatory Capture</dt>
+      <dd>große Firmen beeinflussen Gesetze so, dass sie selbst davon profitieren</dd>
+    </dl>
+
+    <h2>Positionen</h2>
+    <table>
+      <tr><th>Wirtschaft</th><th>Politik (USA)</th><th>Europa</th></tr>
+      <tr><td>Bremsen, aber nicht stoppen</td><td>Keine Gesetze, Firmen sollen selbst bremsen</td><td>Erst aufholen, sonst bleiben USA und China vorne</td></tr>
+    </table>
+
+    <h2>Unsere Meinung</h2>
+    <div class="meinung">
+      <b>Bremsen an der Spitze, nicht bei den Aufholern.</b><br>
+      Werte: Sicherheit und Unabhängigkeit
+    </div>
+
+    <div class="quellen">
+      <b>Quellen</b>
+      <ol>
+        <li>D. Amodei: „We Must Pace the Frontier“, 12.09.2026, darioamodei.com</li>
+        <li>skill-sprinters.de: „Anthropic-Chef Amodei will das Tempo der KI-Entwicklung drosseln …“, 13.09.2026</li>
+        <li>CNBC: „Trump rejects AI regulation calls, slams Anthropic CEO Dario Amodei“, 14.09.2026</li>
+        <li>Reuters: „Europe's AI firms, playing catch-up, challenge US calls for slowdown“, 09/2026</li>
+      </ol>
+    </div>
+  </div>
+</template>
+
+<script>
+  // Das Handout zweimal auf das Blatt setzen
+  const blatt = document.querySelector('.blatt');
+  const vorlage = document.getElementById('vorlage');
+  blatt.append(vorlage.content.cloneNode(true), vorlage.content.cloneNode(true));
+</script>
+</body>
+</html>
