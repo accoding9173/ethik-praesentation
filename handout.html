@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <title>Handout: KI bremsen?</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&display=swap">
 <style>
   /* A4 quer mit zwei A5-Handouts nebeneinander, nach dem Drucken in der Mitte durchschneiden */
   @page { size: A4 landscape; margin: 0; }
@@ -40,22 +39,16 @@
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
 
-  /* Handgemachter Look: Handschrift-Schriften, Textmarker, schiefe Kästen */
-  .handout { font-family: "Patrick Hand", "Comic Sans MS", cursive; font-size: 10pt; line-height: 1.2; color: #1d1d3a; }
-  .kopf { font-size: 9pt; color: #444; border-bottom: none; background:
-    linear-gradient(#1d1d3a, #1d1d3a) bottom / 100% 1.5px no-repeat; }
-  h1 { font-family: "Caveat", cursive; font-size: 26pt; line-height: 1; margin: 2mm 0 0; transform: rotate(-1deg); }
-  h2 { font-family: "Caveat", cursive; font-size: 14pt; text-transform: none; letter-spacing: 0; margin: 2.5mm 0 .5mm;
-    display: block; width: fit-content; padding: 0 1.5mm;
-    background: linear-gradient(transparent 55%, #fff27a 55%, #fff27a 90%, transparent 90%); }
-  .frage { font-size: 11.5pt; border: 2px solid #1d1d3a; transform: rotate(-.6deg);
-    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; }
-  table { font-size: 9pt; }
-  th, td { border-color: #1d1d3a; }
-  th { background: #dff0ff; font-weight: normal; font-size: 10.5pt; }
-  .meinung { background: #fff7b8; border-radius: 1mm; transform: rotate(.5deg);
-    box-shadow: 1px 2px 4px rgba(0,0,0,.18); }
-  .quellen { font-size: 7.5pt; }
+
+  /* Schlichter Look wie aus Word/Writer: Calibri, schwarz auf weiß, keine runden Ecken */
+  .handout { font-family: Calibri, Carlito, "Liberation Sans", Arial, sans-serif; font-size: 10pt;
+    line-height: 1.25; color: #000; background: #fff; }
+  .kopf { color: #000; border-bottom: 1px solid #000; }
+  h1 { font-size: 18pt; margin: 3mm 0 1mm; }
+  h2 { font-size: 11.5pt; text-transform: none; letter-spacing: 0; margin: 3.5mm 0 1mm; text-decoration: underline; }
+  .frage { font-size: 11pt; border: 1px solid #000; border-radius: 0; padding: 2mm 3mm; }
+  th { background: none; }
+  .meinung { background: none; border-radius: 0; padding: 0; }
 </style>
 </head>
 <body>
