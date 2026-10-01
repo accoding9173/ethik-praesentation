@@ -49,6 +49,10 @@
   .quellen { font-size: 1.05vw; line-height: 1.6; color: #bbb; text-align: left; max-width: 80vw;
     padding-left: 1.2em; }
 
+  /* Circle-Jerk-Dreieck */
+  .cycle { width: min(90vw, 84vh); height: auto; }
+  .cycle text { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
   .quelle { position: absolute; bottom: 2vh; left: 0; right: 0; font-size: .9vw; color: #666; }
   #nr { position: fixed; bottom: 2vh; right: 2vw; font-size: .9vw; color: #444; }
 </style>
@@ -106,6 +110,61 @@
     </div>
   </div>
   <div class="kern">Problem: Wenige Firmen entscheiden über ein Risiko, das <b>alle</b> betrifft.</div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Position 1: Wirtschaft</div>
+    <h2>„Ja, bremsen, aber nicht stoppen“</h2>
+    <ul>
+      <li>Die großen KI-Firmen (Anthropic, OpenAI, Microsoft) unterstützen den Plan</li>
+      <li>Anthropic lässt als Erstes <b>externe Prüfer</b> ins Haus</li>
+      <li><b>Kritik:</b> Beide Firmen bringen weiter neue Modelle heraus und planen ihren Börsengang</li>
+      <li><b>Werte:</b> Sicherheit, aber auch Marktmacht</li>
+    </ul>
+    <div class="zitat">„Wenn wir von ‚Pacing‘ sprechen, meinen wir nicht ‚Stoppen‘.“
+      <span>Sam Altman, CEO von OpenAI (übersetzt)</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <svg class="cycle" viewBox="0 0 1000 850" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-end">
+        <path d="M0,0 L10,5 L0,10 z" fill="#ccc"></path>
+      </marker>
+    </defs>
+
+    <!-- Pfeile (Geldkreislauf, gegen den Uhrzeigersinn) -->
+    <path d="M565,215 Q795,370 790,605" fill="none" stroke="#ccc" stroke-width="3" marker-end="url(#ah)"></path>
+    <path d="M725,735 Q500,815 285,735" fill="none" stroke="#ccc" stroke-width="3" marker-end="url(#ah)"></path>
+    <path d="M205,605 Q195,370 430,215" fill="none" stroke="#ccc" stroke-width="3" marker-end="url(#ah)"></path>
+
+    <!-- Geldflüsse -->
+    <text x="850" y="410" text-anchor="middle" fill="#aaa" font-size="23">investiert</text>
+    <text x="850" y="440" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">≈ 100 Mrd. $</text>
+
+    <text x="500" y="845" text-anchor="middle" fill="#aaa" font-size="23">zahlt Cloud</text>
+    <text x="500" y="820" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">≈ 300 Mrd. $</text>
+
+    <text x="150" y="410" text-anchor="middle" fill="#aaa" font-size="23">kauft GPUs</text>
+    <text x="150" y="440" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">≈ 40 Mrd. $</text>
+
+    <!-- Nvidia (oben) -->
+    <g transform="translate(440,80) scale(5)" fill="#fff"><path d="M8.948 8.798v-1.43a6.7 6.7 0 0 1 .424-.018c3.922-.124 6.493 3.374 6.493 3.374s-2.774 3.851-5.75 3.851c-.398 0-.787-.062-1.158-.185v-4.346c1.528.185 1.837.857 2.747 2.385l2.04-1.714s-1.492-1.952-4-1.952a6.016 6.016 0 0 0-.796.035m0-4.735v2.138l.424-.027c5.45-.185 9.01 4.47 9.01 4.47s-4.08 4.964-8.33 4.964c-.37 0-.733-.035-1.095-.097v1.325c.3.035.61.062.91.062 3.957 0 6.82-2.023 9.593-4.408.459.371 2.34 1.263 2.73 1.652-2.633 2.208-8.772 3.984-12.253 3.984-.335 0-.653-.018-.971-.053v1.864H24V4.063zm0 10.326v1.131c-3.657-.654-4.673-4.46-4.673-4.46s1.758-1.944 4.673-2.262v1.237H8.94c-1.528-.186-2.73 1.245-2.73 1.245s.68 2.412 2.739 3.11M2.456 10.9s2.164-3.197 6.5-3.533V6.201C4.153 6.59 0 10.653 0 10.653s2.35 6.802 8.948 7.42v-1.237c-4.84-.6-6.492-5.936-6.492-5.936z"></path></g>
+    <text x="500" y="270" text-anchor="middle" fill="#fff" font-size="32" font-weight="700">Jensen Huang</text>
+    <text x="500" y="302" text-anchor="middle" fill="#888" font-size="22">NVIDIA</text>
+
+    <!-- OpenAI (unten rechts) -->
+    <g transform="translate(760,620) scale(5)" fill="#fff"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"></path></g>
+    <text x="820" y="810" text-anchor="middle" fill="#fff" font-size="32" font-weight="700">Sam Altman</text>
+    <text x="820" y="842" text-anchor="middle" fill="#888" font-size="22">OpenAI</text>
+
+    <!-- Oracle (unten links) -->
+    <g transform="translate(120,620) scale(5)" fill="#fff"><path d="M16.412 4.412h-8.82a7.588 7.588 0 0 0-.008 15.176h8.828a7.588 7.588 0 0 0 0-15.176zm-.193 12.502H7.786a4.915 4.915 0 0 1 0-9.828h8.433a4.914 4.914 0 1 1 0 9.828z"></path></g>
+    <text x="180" y="810" text-anchor="middle" fill="#fff" font-size="32" font-weight="700">Larry Ellison</text>
+    <text x="180" y="842" text-anchor="middle" fill="#888" font-size="22">Oracle</text>
+  </svg>
 </section>
 
 <section class="slide">
