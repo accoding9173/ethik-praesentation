@@ -129,16 +129,16 @@
 
 <section class="slide">
   <svg class="cycle" viewBox="0 0 1000 850" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-        <path d="M0,0 L10,5 L0,10 z" fill="#ccc"></path>
-      </marker>
-    </defs>
-
-    <!-- Pfeile (Geldkreislauf, gegen den Uhrzeigersinn) – gerade von Logo zu Logo -->
-    <path d="M544,217 L786,583" fill="none" stroke="#ccc" stroke-width="3" marker-end="url(#ah)"></path>
-    <path d="M750,650 L250,650" fill="none" stroke="#ccc" stroke-width="3" marker-end="url(#ah)"></path>
-    <path d="M214,583 L456,217" fill="none" stroke="#ccc" stroke-width="3" marker-end="url(#ah)"></path>
+    <!-- Pfeile (Geldkreislauf, gegen den Uhrzeigersinn) – Linie + feste Spitze, exakt aufs Logo gerichtet -->
+    <!-- Nvidia -> OpenAI -->
+    <line x1="536" y1="205" x2="778" y2="572" stroke="#ccc" stroke-width="3"></line>
+    <polygon points="793.6,594.9 768.2,578.2 788.2,564.9" fill="#ccc"></polygon>
+    <!-- OpenAI -> Oracle -->
+    <line x1="764" y1="650" x2="264" y2="650" stroke="#ccc" stroke-width="3"></line>
+    <polygon points="236,650 264,638 264,662" fill="#ccc"></polygon>
+    <!-- Oracle -> Nvidia -->
+    <line x1="206" y1="595" x2="448" y2="228" stroke="#ccc" stroke-width="3"></line>
+    <polygon points="463.6,205.1 458.2,235.1 438.2,221.8" fill="#ccc"></polygon>
 
     <!-- Nvidia (oben), Beschriftung oberhalb -->
     <text x="500" y="56" text-anchor="middle" fill="#fff" font-size="32" font-weight="700">Jensen Huang</text>
