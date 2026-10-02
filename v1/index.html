@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ethik-Präsentation: KI bremsen?</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; color: #fff; overflow: hidden;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; cursor: pointer; user-select: none; }
+  .slide { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; padding: 5vw; box-sizing: border-box;
+    opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility .6s; }
+  .slide.active { opacity: 1; visibility: visible; }
+
+  h1 { font-size: 5.5vw; font-weight: 700; margin: 0; letter-spacing: -.01em; }
+  h2 { font-size: 3.4vw; font-weight: 700; margin: 0 0 2.5vw; }
+  .sub { font-size: 2.4vw; color: #aaa; margin-top: 2.5vw; letter-spacing: .3em; text-transform: uppercase; }
+  .label { font-size: 1.4vw; color: #888; letter-spacing: .3em; text-transform: uppercase; margin-bottom: 1.5vw; }
+
+  video { width: 90vw; height: 85vh; object-fit: contain; }
+  .artikel { width: 85vw; max-height: 70vh; object-fit: contain; border-radius: 12px; box-shadow: 0 0 0 1px #333; }
+
+  .frage { font-size: 4vw; font-weight: 700; line-height: 1.25; max-width: 80vw; margin: 0 0 3vw; }
+
+  /* Stichpunkt-Folien */
+  .inhalt { width: 100%; max-width: 75vw; text-align: left; }
+  ul { margin: 0; padding-left: 1.2em; font-size: 1.9vw; line-height: 1.5; }
+  li { margin-bottom: .6vw; }
+  li b { color: #fff; }
+  li { color: #ccc; }
+  .zitat { margin-top: 2vw; padding-left: 1.5vw; border-left: 3px solid #fff; font-size: 1.7vw;
+    font-style: italic; color: #fff; }
+  .zitat span { display: block; font-style: normal; font-size: 1.1vw; color: #888; margin-top: .5vw; }
+
+  /* Wertekonflikt */
+  .waage { display: flex; gap: 3vw; justify-content: center; width: 100%; max-width: 75vw; }
+  .seite { flex: 1; border: 1px solid #444; border-radius: 12px; padding: 2vw; text-align: left; }
+  .seite h3 { margin: 0 0 1vw; font-size: 2vw; }
+  .seite ul { font-size: 1.6vw; }
+  .kern { margin-top: 2.5vw; font-size: 1.8vw; color: #ddd; }
+
+  /* Balken Risikokapital */
+  .balken { margin-top: 2vw; font-size: 1.3vw; color: #aaa; }
+  .zeile { display: flex; align-items: center; gap: 1vw; margin: .6vw 0; }
+  .zeile .name { width: 6vw; }
+  .zeile .bar { height: 1.6vw; background: #fff; }
+  .zeile .bar.eu { background: #3b6fe0; }
+
+  .quellen { font-size: 1.05vw; line-height: 1.6; color: #bbb; text-align: left; max-width: 80vw;
+    padding-left: 1.2em; }
+
+  /* Circle-Jerk-Dreieck */
+  .cycle { width: min(90vw, 84vh); height: auto; }
+  .cycle text { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+  .quelle { position: absolute; bottom: 2vh; left: 0; right: 0; font-size: .9vw; color: #666; }
+  #nr { position: fixed; bottom: 2vh; right: 2vw; font-size: .9vw; color: #444; }
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <h1>Vortrag über ein ethisches Thema</h1>
+  <div class="sub">Religion</div>
+</section>
+
+<section class="slide">
+  <video src="spaghetti.mp4" muted playsinline preload="auto"></video>
+  <div class="quelle">Quelle: „Comparison AI of Will Smith eating spaghetti“, r/GenAI4all, reddit.com/r/GenAI4all/comments/1r3lxux</div>
+</section>
+
+<section class="slide">
+  <img class="artikel" src="artikel.png" alt="Artikel: Anthropic-Chef Amodei will das Tempo der KI-Entwicklung drosseln">
+  <div class="quelle">Quelle: skill-sprinters.de, „Anthropic-Chef Amodei will das Tempo der KI-Entwicklung drosseln und holt dafür externe Prüfer ins Haus“, 13.09.2026</div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Aktuelle Relevanz</div>
+    <h2>„We Must Pace the Frontier“</h2>
+    <ul>
+      <li><b>12.09.2026:</b> Anthropic-Chef Dario Amodei fordert, die KI-Entwicklung zu bremsen</li>
+      <li>Kein Stopp, aber die Fähigkeiten der stärksten Modelle sollen <b>langsamer</b> wachsen</li>
+      <li>Plan: <b>externe Prüfer</b> in den Firmen, <b>Gesetze</b> für alle KI-Firmen, <b>weltweite Absprachen</b> (auch mit China)</li>
+      <li>OpenAI, xAI (Musk) und Microsoft stimmen zu</li>
+      <li><b>Aber:</b> Nur 10 Tage später bringen Anthropic und OpenAI neue Top-Modelle heraus</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="label">Die Grundfrage</div>
+  <p class="frage">Sollte die Entwicklung immer stärkerer KI gebremst werden?</p>
+  <div class="waage">
+    <div class="seite">
+      <h3>Vollgas</h3>
+      <ul>
+        <li>Fortschritt (Medizin, Forschung)</li>
+        <li>Wohlstand und Wettbewerb</li>
+        <li>„Sonst baut es China“</li>
+      </ul>
+    </div>
+    <div class="seite">
+      <h3>Bremsen</h3>
+      <ul>
+        <li>Sicherheit und Kontrolle</li>
+        <li>Verantwortung für die Zukunft</li>
+        <li>Folgen sind nicht umkehrbar</li>
+      </ul>
+    </div>
+  </div>
+  <div class="kern">Problem: Wenige Firmen entscheiden über ein Risiko, das <b>alle</b> betrifft.</div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Position 1: Wirtschaft</div>
+    <h2>„Ja, bremsen, aber nicht stoppen“</h2>
+    <ul>
+      <li>Die großen KI-Firmen (Anthropic, OpenAI, Microsoft) unterstützen den Plan</li>
+      <li>Anthropic lässt als Erstes <b>externe Prüfer</b> ins Haus</li>
+      <li><b>Kritik:</b> Beide Firmen bringen weiter neue Modelle heraus und planen ihren Börsengang</li>
+      <li><b>Werte:</b> Sicherheit, aber auch Marktmacht</li>
+    </ul>
+    <div class="zitat">„Wenn wir von ‚Pacing‘ sprechen, meinen wir nicht ‚Stoppen‘.“
+      <span>Sam Altman, CEO von OpenAI (übersetzt)</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <svg class="cycle" viewBox="0 0 1000 850" xmlns="http://www.w3.org/2000/svg">
+    <!-- Node-Kreise (gleich gross, verankern die Pfeile) -->
+    <circle cx="500" cy="165" r="72" fill="none" stroke="#444" stroke-width="2"></circle>
+    <circle cx="760" cy="615" r="72" fill="none" stroke="#444" stroke-width="2"></circle>
+    <circle cx="240" cy="615" r="72" fill="none" stroke="#444" stroke-width="2"></circle>
+
+    <!-- Pfeile (Geldkreislauf): Nvidia -> OpenAI -> Oracle -> Nvidia, exakt Rand zu Rand -->
+    <line x1="536" y1="227.3" x2="711" y2="530.2" stroke="#ccc" stroke-width="3"></line>
+    <polygon points="724,552.7 701.5,535.7 720.5,524.7" fill="#ccc"></polygon>
+
+    <line x1="688" y1="615" x2="338" y2="615" stroke="#ccc" stroke-width="3"></line>
+    <polygon points="312,615 338,604 338,626" fill="#ccc"></polygon>
+
+    <line x1="276" y1="552.7" x2="451" y2="249.8" stroke="#ccc" stroke-width="3"></line>
+    <polygon points="464,227.3 460.5,255.3 441.5,244.3" fill="#ccc"></polygon>
+
+    <!-- Nvidia (oben), Beschriftung oberhalb -->
+    <text x="500" y="52" text-anchor="middle" fill="#fff" font-size="32" font-weight="700">Jensen Huang</text>
+    <text x="500" y="80" text-anchor="middle" fill="#888" font-size="22">NVIDIA</text>
+    <g transform="translate(442.4,107.4) scale(4.8)" fill="#76b900"><path d="M8.948 8.798v-1.43a6.7 6.7 0 0 1 .424-.018c3.922-.124 6.493 3.374 6.493 3.374s-2.774 3.851-5.75 3.851c-.398 0-.787-.062-1.158-.185v-4.346c1.528.185 1.837.857 2.747 2.385l2.04-1.714s-1.492-1.952-4-1.952a6.016 6.016 0 0 0-.796.035m0-4.735v2.138l.424-.027c5.45-.185 9.01 4.47 9.01 4.47s-4.08 4.964-8.33 4.964c-.37 0-.733-.035-1.095-.097v1.325c.3.035.61.062.91.062 3.957 0 6.82-2.023 9.593-4.408.459.371 2.34 1.263 2.73 1.652-2.633 2.208-8.772 3.984-12.253 3.984-.335 0-.653-.018-.971-.053v1.864H24V4.063zm0 10.326v1.131c-3.657-.654-4.673-4.46-4.673-4.46s1.758-1.944 4.673-2.262v1.237H8.94c-1.528-.186-2.73 1.245-2.73 1.245s.68 2.412 2.739 3.11M2.456 10.9s2.164-3.197 6.5-3.533V6.201C4.153 6.59 0 10.653 0 10.653s2.35 6.802 8.948 7.42v-1.237c-4.84-.6-6.492-5.936-6.492-5.936z"></path></g>
+
+    <!-- OpenAI (unten rechts), Beschriftung unterhalb -->
+    <g transform="translate(702.4,557.4) scale(4.8)" fill="#fff"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"></path></g>
+    <text x="760" y="720" text-anchor="middle" fill="#fff" font-size="32" font-weight="700">Sam Altman</text>
+    <text x="760" y="748" text-anchor="middle" fill="#888" font-size="22">OpenAI</text>
+
+    <!-- Oracle (unten links), Beschriftung unterhalb -->
+    <g transform="translate(182.4,557.4) scale(4.8)" fill="#f80000"><path d="M16.412 4.412h-8.82a7.588 7.588 0 0 0-.008 15.176h8.828a7.588 7.588 0 0 0 0-15.176zm-.193 12.502H7.786a4.915 4.915 0 0 1 0-9.828h8.433a4.914 4.914 0 1 1 0 9.828z"></path></g>
+    <text x="240" y="720" text-anchor="middle" fill="#fff" font-size="32" font-weight="700">Larry Ellison</text>
+    <text x="240" y="748" text-anchor="middle" fill="#888" font-size="22">Oracle</text>
+  </svg>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Position 1: Wirtschaft</div>
+    <h2>„Ja, bremsen, aber nicht stoppen“</h2>
+    <ul>
+      <li>Die großen KI-Firmen (Anthropic, OpenAI, Microsoft) unterstützen den Plan</li>
+      <li>Anthropic lässt als Erstes <b>externe Prüfer</b> ins Haus</li>
+      <li><b>Kritik:</b> Beide Firmen bringen weiter neue Modelle heraus und planen ihren Börsengang</li>
+      <li><b>Werte:</b> Sicherheit, aber auch Marktmacht</li>
+    </ul>
+    <div class="zitat">„Wenn wir von ‚Pacing‘ sprechen, meinen wir nicht ‚Stoppen‘.“
+      <span>Sam Altman, CEO von OpenAI (übersetzt)</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Position 2: Politik (USA)</div>
+    <h2>„Keine Gesetze, das ist nur Taktik“</h2>
+    <ul>
+      <li><b>Trump</b> lehnt Regulierung ab und greift Amodei öffentlich an</li>
+      <li>KI-Berater <b>David Sacks:</b> Die Firmen sollen selbst bremsen, statt nach Gesetzen zu rufen</li>
+      <li>Vorwurf <b>„Regulatory Capture“</b>: Große Firmen wollen Regeln, die nur sie erfüllen können</li>
+      <li>China würde sowieso nicht mitmachen</li>
+      <li><b>Werte:</b> Freiheit, Wettbewerb, nationale Stärke</li>
+    </ul>
+    <div class="zitat">„Hört auf so zu tun, als wäre der Wunsch zu bremsen rein selbstlos.“
+      <span>David Sacks, KI-Berater des Weißen Hauses (übersetzt)</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Position 3: Europa</div>
+    <h2>„Erst aufholen, dann bremsen“</h2>
+    <ul>
+      <li>Europa hat <b>keine echten Frontier-Modelle</b>, nur Firmen wie Mistral (FR) und Black Forest Labs (DE)</li>
+      <li>Ziel: erst einmal <b>gute eigene Modelle</b> bauen</li>
+      <li>Eine Bremse jetzt würde den <b>Vorsprung von USA und China festschreiben</b></li>
+      <li><b>Werte:</b> Gerechtigkeit, Chancengleichheit, Unabhängigkeit</li>
+    </ul>
+    <div class="zitat">„Einige etablierte Firmen nutzen diesen Moment, um ihre Marktposition zu festigen.“
+      <span>Mistral AI (übersetzt)</span></div>
+    <div class="balken">Anteil am weltweiten KI-Risikokapital (2023):
+      <div class="zeile"><span class="name">USA</span><div class="bar" style="width:38.5vw"></div>77 %</div>
+      <div class="zeile"><span class="name">Europa</span><div class="bar eu" style="width:5.5vw"></div>11 %</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Unsere Meinung</div>
+    <h2>„Bremsen an der Spitze, nicht bei den Aufholern“</h2>
+    <ul>
+      <li><b>Werte:</b> Sicherheit und Unabhängigkeit</li>
+      <li><b>Norm:</b> Die stärksten KI-Modelle dürfen erst veröffentlicht werden, wenn <b>unabhängige, internationale Prüfer</b> sie getestet haben</li>
+      <li>Diese Regel gilt für <b>alle</b> Spitzenmodelle, egal aus welchem Land</li>
+      <li>Wer aufholt (z. B. Europa), wird dadurch <b>nicht</b> ausgebremst</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Wie wir zu unserem Urteil kamen</div>
+    <h2>Sicherheit und Unabhängigkeit abwägen</h2>
+    <ul>
+      <li>Das Spaghetti-Video zeigt: KI wird <b>extrem schnell</b> besser, deshalb sind wir eher fürs Bremsen</li>
+      <li>Aber: Eine Bremse für alle würde den <b>Vorsprung von USA und China festschreiben</b></li>
+      <li>Wenige Firmen würden dann allein entscheiden, Europa wäre abhängig</li>
+      <li>Unsere Lösung: <b>Nur das Tempo an der Spitze kontrollieren</b>, damit beide Werte geschützt sind</li>
+      <li>Gegenargument USA: „China macht nicht mit“, deshalb müssen die Prüfer <b>international</b> sein</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Quellen</div>
+    <ol class="quellen">
+      <li>Reddit, r/GenAI4all: „Comparison AI of Will Smith eating spaghetti“ – reddit.com/r/GenAI4all/comments/1r3lxux</li>
+      <li>skill-sprinters.de: „Anthropic-Chef Amodei will das Tempo der KI-Entwicklung drosseln …“, 13.09.2026</li>
+      <li>Dario Amodei: „We Must Pace the Frontier“, 12.09.2026 – darioamodei.com/post/we-must-pace-the-frontier</li>
+      <li>The Register: „Frontier AI keeps racing despite calls to slow down“, 23.09.2026</li>
+      <li>MarkTechPost: „Anthropic's 3-Step 'Pace the Frontier' Plan Wins OpenAI, xAI and Microsoft Support“, 13.09.2026</li>
+      <li>CNBC: „Trump rejects AI regulation calls, slams Anthropic CEO Dario Amodei“, 14.09.2026</li>
+      <li>Dealroom: „David Sacks to Altman and Amodei: pace the frontier yourselves“</li>
+      <li>Reuters/Investing.com: „Europe's AI firms, playing catch-up, challenge US calls for slowdown“</li>
+      <li>Cryptopolitan: „Europe's AI firms warn a frontier slowdown would lock in the US lead“</li>
+    </ol>
+  </div>
+</section>
+
+<div id="nr"></div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const nr = document.getElementById('nr');
+  let cur = 0;
+
+  function show(i) {
+    slides[cur].classList.remove('active');
+    const oldVid = slides[cur].querySelector('video');
+    if (oldVid) { oldVid.pause(); oldVid.currentTime = 0; }
+
+    cur = (i + slides.length) % slides.length; // nach der letzten Folie wieder von vorne
+    slides[cur].classList.add('active');
+    const vid = slides[cur].querySelector('video');
+    if (vid) { vid.currentTime = 0; vid.play(); }
+    nr.textContent = (cur + 1) + ' / ' + slides.length;
+  }
+
+  document.addEventListener('click', () => show(cur + 1));
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', ' ', 'PageDown', 'Enter'].includes(e.key)) show(cur + 1);
+    if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) show(cur - 1);
+    if (e.key === 'f') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  });
+
+  show(0);
+</script>
+</body>
+</html>
