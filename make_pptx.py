@@ -1,6 +1,10 @@
 # Backup-PPTX erzeugen: jede Folie der Website als Bild, das Video als echtes Video eingebettet
 # Ausführen: python make_pptx.py (braucht playwright + python-pptx)
 import os
+import subprocess
+from lxml import etree
+from pptx.dml.color import RGBColor
+from pptx.oxml.ns import qn
 from playwright.sync_api import sync_playwright
 from pptx import Presentation
 from pptx.util import Emu
@@ -28,18 +32,48 @@ with sync_playwright() as p:
         pg.keyboard.press("ArrowRight")
     b.close()
 
+# Stumme Kopie (ohne Tonspur) und Vorschaubild aus dem Video
+VIDEO = os.path.join(hier, "spaghetti.mp4")
+STUMM, POSTER = "/tmp/folien/spaghetti-stumm.mp4", "/tmp/folien/poster.png"
+subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", VIDEO, "-an", "-c:v", "copy", STUMM], check=True)
+subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-ss", "1", "-i", VIDEO, "-frames:v", "1", POSTER], check=True)
+info = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                       "stream=width,height,duration", "-of", "csv=p=0", VIDEO],
+                      capture_output=True, text=True, check=True).stdout.strip().split(",")
+VIDEO_W, VIDEO_H, DAUER_MS = int(info[0]), int(info[1]), int(float(info[2]) * 1000)
+
+
+def autoplay(folie, spid):
+    """Timing so setzen wie PowerPoint bei 'Start: Automatisch', Ton aus."""
+    xml = f'''<p:timing xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst>
+<p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>
+<p:par><p:cTn id="3" fill="hold"><p:stCondLst><p:cond delay="indefinite"/><p:cond evt="onBegin" delay="0"><p:tn val="2"/></p:cond></p:stCondLst><p:childTnLst>
+<p:par><p:cTn id="4" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>
+<p:par><p:cTn id="5" presetID="1" presetClass="mediacall" presetSubtype="0" fill="hold" nodeType="afterEffect"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>
+<p:cmd type="call" cmd="playFrom(0.0)"><p:cBhvr><p:cTn id="6" dur="{DAUER_MS}" fill="hold"/><p:tgtEl><p:spTgt spid="{spid}"/></p:tgtEl></p:cBhvr></p:cmd>
+</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par>
+</p:childTnLst></p:cTn><p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst><p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>
+<p:video><p:cMediaNode vol="0" mute="1"><p:cTn id="7" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst></p:cTn><p:tgtEl><p:spTgt spid="{spid}"/></p:tgtEl></p:cMediaNode></p:video>
+</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>'''
+    alt = folie._element.find(qn("p:timing"))
+    if alt is not None:
+        folie._element.remove(alt)
+    folie._element.append(etree.fromstring(xml))
+
+
 prs = Presentation()
 prs.slide_width, prs.slide_height = Emu(12192000), Emu(6858000)  # 16:9
 for i, bild in enumerate(bilder):
     folie = prs.slides.add_slide(prs.slide_layouts[6])
     if i == video_folie:
-        # schwarzer Hintergrund, Video zentriert in 16:9 über die ganze Höhe
+        # schwarzer Hintergrund, Video zentriert im richtigen Seitenverhältnis
         folie.background.fill.solid()
-        from pptx.dml.color import RGBColor
         folie.background.fill.fore_color.rgb = RGBColor(0, 0, 0)
-        folie.shapes.add_movie(os.path.join(hier, "spaghetti.mp4"), 0, 0,
-                               prs.slide_width, prs.slide_height,
-                               poster_frame_image=bild, mime_type="video/mp4")
+        breite = prs.slide_width
+        hoehe = int(breite * VIDEO_H / VIDEO_W)
+        video = folie.shapes.add_movie(STUMM, 0, (prs.slide_height - hoehe) // 2, breite, hoehe,
+                                       poster_frame_image=POSTER, mime_type="video/mp4")
+        autoplay(folie, video.shape_id)
     else:
         folie.shapes.add_picture(bild, 0, 0, prs.slide_width, prs.slide_height)
 
