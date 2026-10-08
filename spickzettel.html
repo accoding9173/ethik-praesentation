@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Spickzettel — KI-Präsentation</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 9pt; color: #111; line-height: 1.45; }
+
+  h1 { font-size: 16pt; margin-bottom: 2pt; }
+  .datum { font-size: 8pt; color: #666; margin-bottom: 10pt; }
+
+  h2 { font-size: 11pt; margin-top: 12pt; margin-bottom: 4pt; border-bottom: 1.5px solid #000; padding-bottom: 2pt; }
+  h3 { font-size: 9.5pt; margin-top: 8pt; margin-bottom: 2pt; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin-top: 4pt; margin-bottom: 6pt; }
+  th { background: #222; color: #fff; text-align: left; padding: 3pt 5pt; font-weight: 600; }
+  td { padding: 2.5pt 5pt; border-bottom: .5px solid #ccc; }
+  tr:nth-child(even) td { background: #f5f5f5; }
+  .highlight td { background: #e8f0ff !important; font-weight: 600; }
+  .new { color: #d00; font-weight: 700; font-size: 7pt; vertical-align: super; }
+
+  .cols { display: flex; gap: 14pt; }
+  .col { flex: 1; }
+
+  ul { padding-left: 14pt; margin-top: 2pt; margin-bottom: 4pt; }
+  li { margin-bottom: 2pt; }
+  .q { font-weight: 700; margin-top: 6pt; margin-bottom: 1pt; }
+  .a { margin-left: 10pt; margin-bottom: 5pt; color: #333; }
+
+  .footer { margin-top: 14pt; font-size: 7pt; color: #999; text-align: center; border-top: .5px solid #ccc; padding-top: 4pt; }
+  .small { font-size: 7.5pt; color: #666; }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Spickzettel — KI bremsen?</h1>
+<p class="datum">Stand: Oktober 2026 · Quelle: artificialanalysis.ai, diverse Nachrichtenquellen</p>
+
+<!-- ===== LEADERBOARD ===== -->
+<h2>Top 20 KI-Modelle — Intelligence Index</h2>
+<table>
+  <tr><th>#</th><th>Modell</th><th>Score</th><th>Hersteller</th><th>Land</th></tr>
+  <tr><td>1</td><td>Claude Opus 5.5</td><td>58</td><td>Anthropic</td><td>USA</td></tr>
+  <tr><td>2</td><td>Claude Sonnet 5.5</td><td>56</td><td>Anthropic</td><td>USA</td></tr>
+  <tr><td>3</td><td>Claude Fable 5.1</td><td>53</td><td>Anthropic</td><td>USA</td></tr>
+  <tr><td>4</td><td>GPT-6 Astra</td><td>53</td><td>OpenAI</td><td>USA</td></tr>
+  <tr><td>5</td><td>Gemini 4 Argon</td><td>53</td><td>Google</td><td>USA</td></tr>
+  <tr><td>6</td><td>GPT-6.1 Sol</td><td>52</td><td>OpenAI</td><td>USA</td></tr>
+  <tr><td>7</td><td>Muse Spark 1.3</td><td>48</td><td>Meta</td><td>USA</td></tr>
+  <tr><td>8</td><td>Grok 4.7</td><td>46</td><td>SpaceXAI</td><td>USA</td></tr>
+  <tr><td>9</td><td>MiMo-V2.6-Pro</td><td>46</td><td>Xiaomi</td><td>China</td></tr>
+  <tr><td>10</td><td>Qwen3.8 Max</td><td>45</td><td>Alibaba</td><td>China</td></tr>
+  <tr><td>11</td><td>GLM-5.3</td><td>45</td><td>Z AI</td><td>China</td></tr>
+  <tr><td>12</td><td>Step 5 Preview</td><td>44</td><td>StepFun</td><td>China</td></tr>
+  <tr><td>13</td><td>Kimi K3</td><td>44</td><td>Kimi (Moonshot)</td><td>China</td></tr>
+  <tr><td>14</td><td>Claude Haiku 5.5</td><td>43</td><td>Anthropic</td><td>USA</td></tr>
+  <tr><td>15</td><td>GPT-5.6 Terra</td><td>42</td><td>OpenAI</td><td>USA</td></tr>
+  <tr><td>16</td><td>Gemini 3.8 Flash</td><td>41</td><td>Google</td><td>USA</td></tr>
+  <tr><td>17</td><td>Qwen3.8 2.4T</td><td>40</td><td>Alibaba</td><td>China</td></tr>
+  <tr><td>18</td><td>DeepSeek V4.1 Flash</td><td>39</td><td>DeepSeek</td><td>China</td></tr>
+  <tr class="highlight"><td>19</td><td>Mistral Large 4 <span class="new">NEU</span></td><td>38</td><td>Mistral</td><td>EU/FR</td></tr>
+  <tr><td>20</td><td>GPT-6 Luna</td><td>38</td><td>OpenAI</td><td>USA</td></tr>
+</table>
+<p class="small">⚠️ Platz 1–8 = USA, Platz 9–13 = China, erstes europäisches Modell erst Platz 19 (Mistral). Das zeigt: Europa hat <b>keine Frontier-Modelle</b>.</p>
+
+<!-- ===== MISTRAL ===== -->
+<h2>Mistral — Europas stärkstes KI-Unternehmen</h2>
+<div class="cols">
+<div class="col">
+<table>
+  <tr><th>Modell</th><th>Score</th><th>Typ</th></tr>
+  <tr class="highlight"><td>Mistral Large 4 Preview <span class="new">NEU</span></td><td>38</td><td>Flaggschiff</td></tr>
+  <tr><td>Mistral Medium 3.5</td><td>14</td><td>Mittelklasse</td></tr>
+  <tr><td>Magistral Medium 1.2</td><td>12</td><td>Reasoning</td></tr>
+  <tr><td>Mistral Small 4</td><td>11</td><td>Kompakt</td></tr>
+  <tr><td>Magistral Small 1.2</td><td>9</td><td>Reasoning</td></tr>
+  <tr><td>Ministral 3 14B/8B</td><td>5–6</td><td>Edge/Mobil</td></tr>
+</table>
+</div>
+<div class="col">
+<h3>Wichtige Fakten zu Mistral</h3>
+<ul>
+  <li>Gegründet 2023 in <b>Paris</b>, von Ex-Meta/Google-Forschern</li>
+  <li>Bewertung: ~6 Mrd. $ (vs. OpenAI ~150 Mrd. $)</li>
+  <li>Setzt auf <b>Open-Source</b> (viele Modelle frei verfügbar)</li>
+  <li>CEO Arthur Mensch: Regulierung darf Innovation nicht stoppen</li>
+  <li>Mistral Large 4 Score 38 vs. Claude Opus 58 = <b>34% weniger</b></li>
+</ul>
+</div>
+</div>
+
+<!-- ===== LÄNDERBILANZ ===== -->
+<h2>Länderbilanz — Wer dominiert die KI?</h2>
+<div class="cols">
+<div class="col">
+<h3>Top 20 nach Land</h3>
+<table>
+  <tr><th>Land</th><th>Modelle in Top 20</th><th>Bestes</th></tr>
+  <tr><td>USA</td><td><b>12</b></td><td>Score 58</td></tr>
+  <tr><td>China</td><td><b>6</b></td><td>Score 46</td></tr>
+  <tr><td>Europa</td><td><b>1</b> (Mistral)</td><td>Score 38</td></tr>
+  <tr><td>Rest</td><td>1 (Kimi)</td><td>Score 44</td></tr>
+</table>
+</div>
+<div class="col">
+<h3>Investitionen (Risikokapital 2025/26)</h3>
+<ul>
+  <li>USA: <b>~77%</b> des globalen KI-Risikokapitals</li>
+  <li>China: <b>~10%</b></li>
+  <li>Europa: <b>~11%</b></li>
+  <li>Microsoft allein: >13 Mrd. $ in OpenAI investiert</li>
+  <li>Stargate-Projekt (Oracle/OpenAI/SoftBank): <b>500 Mrd. $</b> geplant</li>
+</ul>
+</div>
+</div>
+
+<!-- ===== AKTUELLE EREIGNISSE ===== -->
+<h2>Aktuelle Ereignisse (Sept./Okt. 2026)</h2>
+<table>
+  <tr><th>Datum</th><th>Ereignis</th><th>Relevant für</th></tr>
+  <tr><td>12. Sept.</td><td>Dario Amodei (Anthropic): <i>"We Must Pace the Frontier"</i> — fordert Tempo-Bremse</td><td>Folie 3, 4</td></tr>
+  <tr><td>22. Sept.</td><td>Anthropic veröffentlicht neues Top-Modell (trotz Bremsen-Forderung)</td><td>Folie 9</td></tr>
+  <tr><td>23. Sept.</td><td>OpenAI veröffentlicht GPT-6.1 Sol (gleicher Tag wie Anthropic)</td><td>Folie 9</td></tr>
+  <tr><td>~5. Okt.</td><td>Mistral Large 4 Preview erscheint — Europas neues Flaggschiff</td><td>Folie 10</td></tr>
+  <tr><td>Okt. 2026</td><td>EU AI Act: erste Compliance-Fristen greifen für Hochrisiko-KI</td><td>Folie 10</td></tr>
+  <tr><td>2026</td><td>Anthropic & OpenAI planen Börsengänge — brauchen Wachstumsstory</td><td>Folie 9</td></tr>
+</table>
+
+<!-- ===== FAQ ===== -->
+<h2>Mögliche Fragen &amp; Antworten</h2>
+
+<p class="q">„Warum nicht einfach ganz stoppen?"</p>
+<p class="a">→ Dann baut China/USA allein weiter. Wer stoppt, verliert Einfluss UND Sicherheit. Bremsen ≠ Stoppen. Es geht um kontrolliertes Tempo bei Frontier-Modellen, nicht um Stillstand.</p>
+
+<p class="q">„Was ist ein Frontier-Modell?"</p>
+<p class="a">→ Die leistungsstärksten Modelle an der Spitze (aktuell: Score 50+). Sie können Dinge, die kein anderes Modell kann, und bringen neue, unbekannte Risiken. Beispiel: Claude Opus 5.5 (58), GPT-6 (53).</p>
+
+<p class="q">„Was genau kann KI gefährlich machen?"</p>
+<p class="a">→ Deepfakes (gefälschte Videos von Politikern), autonome Waffen (Drohnen entscheiden selbst), Kontrollverlust (Modell klüger als Entwickler), Job-Verlust (Übersetzer, Grafiker, Teile der Programmierung).</p>
+
+<p class="q">„Warum kann Europa nicht einfach aufholen?"</p>
+<p class="a">→ Europas bestes Modell (Mistral Large 4, Score 38) hat 34% weniger Leistung als die Spitze (Score 58). Dazu: nur 11% des Risikokapitals fließt nach Europa. Aufholen braucht Jahre und Milliarden.</p>
+
+<p class="q">„Reguliert die EU denn nicht schon?"</p>
+<p class="a">→ Ja, der EU AI Act (seit 2024). Aber: Mistral-CEO warnt, strenge Regeln helfen den Großen (USA), weil nur sie die Bürokratie stemmen können. Kleine europäische Firmen werden ausgebremst = „Regulatory Capture".</p>
+
+<p class="q">„Macht China wirklich nicht mit?"</p>
+<p class="a">→ Doch! China hat eine eigene „Global AI Governance Initiative". Sie wollen mitbestimmen, aber zu eigenen Bedingungen, nicht nach US-Regeln. China hat 6 Modelle in den Top 20 — sie sind konkurrenzfähig.</p>
+
+<p class="q">„Was heißt ‚Pacing' eigentlich?"</p>
+<p class="a">→ Nicht Stoppen, sondern das Tempo kontrollieren. Neue Frontier-Modelle erst nach unabhängiger Prüfung freigeben. Wie ein Tempolimit auf der Autobahn — man darf fahren, aber nicht rasen.</p>
+
+<p class="q">„Wer soll denn prüfen?"</p>
+<p class="a">→ Unser Vorschlag: eine internationale, unabhängige Prüfstelle — nicht eine Firma, nicht ein Land. Vergleichbar mit der IAEA (Atomenergie) oder dem IPCC (Klima). Alle Seiten müssen sie akzeptieren.</p>
+
+<p class="q">„Werden KI-Modelle wirklich so schnell besser?"</p>
+<p class="a">→ Ja. Will-Smith-Spaghetti-Video: 2023 = Albtraum, 2025 = fast echt. In der Leaderboard-Tabelle sieht man: es gibt schon über 250 bewertete Modelle. Vor 2 Jahren waren es unter 20.</p>
+
+<p class="q">„Warum ist OpenAI/Anthropic heuchlerisch?"</p>
+<p class="a">→ Amodei (Anthropic) fordert am 12. Sept. Bremsen → veröffentlicht 10 Tage später ein neues Top-Modell. Altman (OpenAI): „Pacing heißt nicht Stoppen". Beide planen Börsengang = brauchen Wachstum. Worte ≠ Taten.</p>
+
+<p class="q">„Was ist mit Open Source?"</p>
+<p class="a">→ Mistral und Meta (Llama) setzen auf Open Source = Modelle für alle frei verfügbar. Vorteil: Demokratisierung, jeder kann prüfen. Nachteil: auch Kriminelle können sie nutzen. Frontier-Modelle sind aber fast alle closed source.</p>
+
+<!-- ===== SCHLÜSSELZAHLEN ===== -->
+<h2>Schlüsselzahlen zum Merken</h2>
+<div class="cols">
+<div class="col">
+<ul>
+  <li><b>58</b> — Höchster Intelligence Score (Claude Opus 5.5)</li>
+  <li><b>38</b> — Europas bestes Modell (Mistral Large 4)</li>
+  <li><b>250+</b> — Anzahl bewerteter Modelle</li>
+  <li><b>500 Mrd. $</b> — Stargate-Projekt (geplant)</li>
+  <li><b>150 Mrd. $</b> — OpenAI Bewertung</li>
+</ul>
+</div>
+<div class="col">
+<ul>
+  <li><b>77%</b> — US-Anteil am KI-Risikokapital</li>
+  <li><b>11%</b> — Europas Anteil</li>
+  <li><b>12 von 20</b> — US-Modelle in den Top 20</li>
+  <li><b>6 von 20</b> — Chinesische Modelle in Top 20</li>
+  <li><b>1 von 20</b> — Europäische Modelle in Top 20</li>
+</ul>
+</div>
+</div>
+
+<div class="footer">Ethik-Präsentation · Janosch & Ferdinand · Religion/Ethik · Oktober 2026 · Quelle: artificialanalysis.ai</div>
+
+</body>
+</html>
