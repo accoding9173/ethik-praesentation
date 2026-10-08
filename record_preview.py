@@ -20,18 +20,21 @@ with sync_playwright() as p:
     print(f'{anzahl} Folien gefunden, starte Aufnahme...')
 
     # Erste Folie etwas länger zeigen
-    page.wait_for_timeout(2500)
+    page.wait_for_timeout(3000)
 
     for i in range(1, anzahl):
         page.keyboard.press('ArrowRight')
-        # Video-Folie (Folie 2) länger zeigen
+        page.wait_for_timeout(1200)  # Animation abwarten
+
+        # Video-Folie (Folie 2, i=1): nochmal klicken um Video zu starten
         if i == 1:
+            page.keyboard.press('ArrowRight')  # zweiter Klick → Video startet
             page.wait_for_timeout(5000)
         else:
-            page.wait_for_timeout(2500)
+            page.wait_for_timeout(2000)
 
     # Letzte Folie kurz stehen lassen
-    page.wait_for_timeout(1500)
+    page.wait_for_timeout(2000)
 
     # Video-Pfad holen bevor Context geschlossen wird
     video_path = page.video.path()

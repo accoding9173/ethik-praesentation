@@ -10,7 +10,7 @@
   .slide { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center;
     justify-content: center; text-align: center; padding: 5vw; box-sizing: border-box;
     opacity: 0; z-index: 0; pointer-events: none;
-    transform: translateY(18px); transition: opacity .45s ease, transform .45s ease; }
+    transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
   .slide.active { opacity: 1; z-index: 10; background: #000; pointer-events: auto;
     transform: translateY(0); }
 
@@ -18,21 +18,21 @@
   .slide .label, .slide h1, .slide h2, .slide .sub, .slide .frage,
   .slide .inhalt, .slide .waage, .slide .kern, .slide img, .slide video, .slide svg,
   .slide .zitat, .slide .balken {
-    opacity: 0; transform: translateY(14px);
-    transition: opacity .4s ease, transform .4s ease; }
-  .slide.active .label   { opacity: 1; transform: translateY(0); transition-delay: .05s; }
-  .slide.active h1       { opacity: 1; transform: translateY(0); transition-delay: .1s; }
-  .slide.active h2       { opacity: 1; transform: translateY(0); transition-delay: .12s; }
-  .slide.active .sub     { opacity: 1; transform: translateY(0); transition-delay: .2s; }
-  .slide.active .frage   { opacity: 1; transform: translateY(0); transition-delay: .1s; }
-  .slide.active .inhalt  { opacity: 1; transform: translateY(0); transition-delay: .08s; }
-  .slide.active .waage   { opacity: 1; transform: translateY(0); transition-delay: .2s; }
-  .slide.active .kern    { opacity: 1; transform: translateY(0); transition-delay: .35s; }
-  .slide.active img      { opacity: 1; transform: translateY(0); transition-delay: .1s; }
-  .slide.active video    { opacity: 1; transform: translateY(0); transition-delay: .05s; }
-  .slide.active svg      { opacity: 1; transform: translateY(0); transition-delay: .15s; }
-  .slide.active .zitat   { opacity: 1; transform: translateY(0); transition-delay: .3s; }
-  .slide.active .balken  { opacity: 1; transform: translateY(0); transition-delay: .35s; }
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .5s ease, transform .5s ease; }
+  .slide.active .label   { opacity: 1; transform: translateY(0); transition-delay: .08s; }
+  .slide.active h1       { opacity: 1; transform: translateY(0); transition-delay: .15s; }
+  .slide.active h2       { opacity: 1; transform: translateY(0); transition-delay: .18s; }
+  .slide.active .sub     { opacity: 1; transform: translateY(0); transition-delay: .3s; }
+  .slide.active .frage   { opacity: 1; transform: translateY(0); transition-delay: .15s; }
+  .slide.active .inhalt  { opacity: 1; transform: translateY(0); transition-delay: .12s; }
+  .slide.active .waage   { opacity: 1; transform: translateY(0); transition-delay: .28s; }
+  .slide.active .kern    { opacity: 1; transform: translateY(0); transition-delay: .45s; }
+  .slide.active img      { opacity: 1; transform: translateY(0); transition-delay: .12s; }
+  .slide.active video    { opacity: 1; transform: translateY(0); transition-delay: .08s; }
+  .slide.active svg      { opacity: 1; transform: translateY(0); transition-delay: .2s; }
+  .slide.active .zitat   { opacity: 1; transform: translateY(0); transition-delay: .4s; }
+  .slide.active .balken  { opacity: 1; transform: translateY(0); transition-delay: .45s; }
 
   h1 { font-size: 5.5vw; font-weight: 700; margin: 0; letter-spacing: -.01em; }
   h2 { font-size: 3.4vw; font-weight: 700; margin: 0 0 2.5vw; }
@@ -327,22 +327,36 @@
   const nr = document.getElementById('nr');
   let cur = 0;
 
+  let videoWaiting = false; // true = auf Video-Folie, nächster Klick startet Video
+
   function show(i) {
     slides[cur].classList.remove('active');
     const oldVid = slides[cur].querySelector('video');
     if (oldVid) { oldVid.pause(); oldVid.currentTime = 0; }
 
-    cur = (i + slides.length) % slides.length; // nach der letzten Folie wieder von vorne
+    cur = (i + slides.length) % slides.length;
     slides[cur].classList.add('active');
     const vid = slides[cur].querySelector('video');
-    if (vid) { vid.currentTime = 0; vid.play(); }
+    if (vid) { vid.currentTime = 0; videoWaiting = true; } // Video noch NICHT abspielen
+    else { videoWaiting = false; }
     nr.textContent = (cur + 1) + ' / ' + slides.length;
   }
 
-  document.addEventListener('click', () => show(cur + 1));
+  function advance() {
+    if (videoWaiting) {
+      // Zweiter Klick auf Video-Folie → Video abspielen
+      const vid = slides[cur].querySelector('video');
+      if (vid) { vid.currentTime = 0; vid.play(); }
+      videoWaiting = false;
+      return;
+    }
+    show(cur + 1);
+  }
+
+  document.addEventListener('click', () => advance());
   document.addEventListener('keydown', e => {
-    if (['ArrowRight', ' ', 'PageDown', 'Enter'].includes(e.key)) show(cur + 1);
-    if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) show(cur - 1);
+    if (['ArrowRight', ' ', 'PageDown', 'Enter'].includes(e.key)) advance();
+    if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { videoWaiting = false; show(cur - 1); }
     if (e.key === 'f') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
   });
 
