@@ -7,10 +7,32 @@
 <style>
   html, body { margin: 0; height: 100%; background: #000; color: #fff; overflow: hidden;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; cursor: pointer; user-select: none; }
-  .slide { position: fixed; inset: 0; display: none; flex-direction: column; align-items: center;
+  .slide { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center;
     justify-content: center; text-align: center; padding: 5vw; box-sizing: border-box;
-    opacity: 0; z-index: 0; }
-  .slide.active { display: flex; opacity: 1; z-index: 10; background: #000; }
+    opacity: 0; z-index: 0; pointer-events: none;
+    transform: translateY(18px); transition: opacity .45s ease, transform .45s ease; }
+  .slide.active { opacity: 1; z-index: 10; background: #000; pointer-events: auto;
+    transform: translateY(0); }
+
+  /* Elemente staggered einblenden */
+  .slide .label, .slide h1, .slide h2, .slide .sub, .slide .frage,
+  .slide .inhalt, .slide .waage, .slide .kern, .slide img, .slide video, .slide svg,
+  .slide .zitat, .slide .balken {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity .4s ease, transform .4s ease; }
+  .slide.active .label   { opacity: 1; transform: translateY(0); transition-delay: .05s; }
+  .slide.active h1       { opacity: 1; transform: translateY(0); transition-delay: .1s; }
+  .slide.active h2       { opacity: 1; transform: translateY(0); transition-delay: .12s; }
+  .slide.active .sub     { opacity: 1; transform: translateY(0); transition-delay: .2s; }
+  .slide.active .frage   { opacity: 1; transform: translateY(0); transition-delay: .1s; }
+  .slide.active .inhalt  { opacity: 1; transform: translateY(0); transition-delay: .08s; }
+  .slide.active .waage   { opacity: 1; transform: translateY(0); transition-delay: .2s; }
+  .slide.active .kern    { opacity: 1; transform: translateY(0); transition-delay: .35s; }
+  .slide.active img      { opacity: 1; transform: translateY(0); transition-delay: .1s; }
+  .slide.active video    { opacity: 1; transform: translateY(0); transition-delay: .05s; }
+  .slide.active svg      { opacity: 1; transform: translateY(0); transition-delay: .15s; }
+  .slide.active .zitat   { opacity: 1; transform: translateY(0); transition-delay: .3s; }
+  .slide.active .balken  { opacity: 1; transform: translateY(0); transition-delay: .35s; }
 
   h1 { font-size: 5.5vw; font-weight: 700; margin: 0; letter-spacing: -.01em; }
   h2 { font-size: 3.4vw; font-weight: 700; margin: 0 0 2.5vw; }
