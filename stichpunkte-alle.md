@@ -3,7 +3,7 @@
 ---
 
 ## 1 — Titel [JANOSCH]
-- Begrüßung, Thema: Sollte KI **gebremst** werden?
+- Begrüßung 8b Dolgner, Thema: Ki Entwicklung
 - 4 Positionen → eigene Meinung → "Zuerst ein Video"
 
 ## 2 — Spaghetti-Video [JANOSCH]
@@ -40,7 +40,7 @@
 - **Werte:** Wohlstand, Stabilität, Wachstum
 
 ## 8 — Geldkreislauf-Dreieck [JANOSCH]
-- **Nvidia** = Chips, **OpenAI** = kauft Chips, **Oracle** = Rechenzentren
+- **Nvidia** = Chips, **OpenAI** = kauft rechenzentren bei Oracle, **Oracle** = kauft bei Nvidia chips für rechenzentren
 - Geld fließt im Kreis → jeder verdient nur, solange alle wachsen
 - Einer bremst → bricht für alle zusammen
 
@@ -51,7 +51,7 @@
 - → Übergabe Ferdinand: geopolitische Positionen
 
 ## 10 — Position 2: Europa [FERDINAND]
-- **Erst aufholen, dann bremsen** — keine Frontier-Modelle (Mistral, Black Forest Labs)
+- **Erst aufholen, dann bremsen** — keine Frontier-Modelle (Mistral Text modelle, Black Forest Labs Bild generierung)
 - Bremse jetzt → Stand eingefroren → Europa bleibt abhängig
 - **Zitat Mistral:** "Etablierte Firmen festigen Marktposition"
 - **77%** Risikokapital USA, **11%** Europa
