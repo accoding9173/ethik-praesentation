@@ -7,10 +7,10 @@
 <style>
   html, body { margin: 0; height: 100%; background: #000; color: #fff; overflow: hidden;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; cursor: pointer; user-select: none; }
-  .slide { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center;
+  .slide { position: fixed; inset: 0; display: none; flex-direction: column; align-items: center;
     justify-content: center; text-align: center; padding: 5vw; box-sizing: border-box;
-    opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility .6s; }
-  .slide.active { opacity: 1; visibility: visible; }
+    opacity: 0; z-index: 0; }
+  .slide.active { display: flex; opacity: 1; z-index: 10; background: #000; }
 
   h1 { font-size: 5.5vw; font-weight: 700; margin: 0; letter-spacing: -.01em; }
   h2 { font-size: 3.4vw; font-weight: 700; margin: 0 0 2.5vw; }
@@ -112,18 +112,18 @@
   <div class="kern">Problem: Wenige Firmen entscheiden über ein Risiko, das <b>alle</b> betrifft.</div>
 </section>
 
-<section class=”slide”>
-  <div class=”inhalt”>
-    <div class=”label”>Position 1: Wirtschaft</div>
-    <h2>„Nicht bremsen — das kann sich niemand leisten”</h2>
+<section class="slide">
+  <div class="inhalt">
+    <div class="label">Position 1: Wirtschaft</div>
+    <h2>„Nicht bremsen — das kann sich niemand leisten"</h2>
     <ul>
       <li>Hunderte Milliarden Dollar stecken in KI — basierend auf der Erwartung, dass es <b>immer schneller</b> weitergeht</li>
-      <li>Bremsen sendet ein Signal: <b>„Das Wachstum verlangsamt sich”</b> → Investoren ziehen sich zurück</li>
+      <li>Bremsen sendet ein Signal: <b>„Das Wachstum verlangsamt sich"</b> → Investoren ziehen sich zurück</li>
       <li>Ohne Risikokapital <b>platzt die Blase</b> → Startups sterben, Bewertungen kollabieren</li>
       <li>Folge: eine Wirtschaftskrise wie beim <b>Dot-com-Crash 2000</b></li>
       <li><b>Werte:</b> Wohlstand, Stabilität, Wachstum</li>
     </ul>
-    <div class=”zitat”>„Die KI-Branche hat ein System gebaut, das Vollgas braucht, um nicht zu crashen.”
+    <div class="zitat">„Die KI-Branche hat ein System gebaut, das Vollgas braucht, um nicht zu crashen."
       <span>Eigene Formulierung</span></div>
   </div>
 </section>
@@ -288,7 +288,8 @@
     if (e.key === 'f') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
   });
 
-  show(0);
+  const start = parseInt(location.hash.replace('#',''), 10);
+  show(start > 0 && start <= slides.length ? start - 1 : 0);
 </script>
 </body>
 </html>
