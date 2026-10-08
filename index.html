@@ -360,6 +360,20 @@
     if (e.key === 'f') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
   });
 
+  // Touch-Swipe für Tablets
+  let touchX = 0, touchY = 0;
+  document.addEventListener('touchstart', e => {
+    touchX = e.changedTouches[0].clientX;
+    touchY = e.changedTouches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    const dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx)) return; // zu kurz oder vertikal
+    if (dx < 0) advance();        // swipe links → nächste Folie
+    else { videoWaiting = false; show(cur - 1); } // swipe rechts → zurück
+  }, { passive: true });
+
   const start = parseInt(location.hash.replace('#',''), 10);
   show(start > 0 && start <= slides.length ? start - 1 : 0);
 </script>
