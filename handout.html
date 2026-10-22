@@ -4,108 +4,124 @@
 <meta charset="utf-8">
 <title>Handout: KI bremsen?</title>
 <style>
-  /* A4 quer mit zwei A5-Handouts nebeneinander, nach dem Drucken in der Mitte durchschneiden */
-  @page { size: A4 landscape; margin: 0; }
-  html, body { margin: 0; background: #ddd; color: #000;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  .blatt { width: 297mm; height: 210mm; margin: 10mm auto; background: #fff; display: flex;
+  /* Ein Handout auf A4 hochkant */
+  @page { size: A4 portrait; margin: 0; }
+  html, body { margin: 0; background: #ddd; color: #000; }
+  .handout { width: 210mm; height: 297mm; margin: 10mm auto; background: #fff; box-sizing: border-box;
+    padding: 9mm 13mm 7mm; display: flex; flex-direction: column; overflow: visible;
+    font-family: Calibri, Carlito, "Liberation Sans", Arial, sans-serif; font-size: 8.7pt; line-height: 1.18;
     box-shadow: 0 2px 12px rgba(0,0,0,.2); }
-  .handout { width: 148.5mm; height: 210mm; box-sizing: border-box; padding: 8mm 10mm;
-    display: flex; flex-direction: column; font-size: 8.5pt; line-height: 1.32; }
-  .handout + .handout { border-left: 1px dashed #999; }
 
-  .kopf { display: flex; justify-content: space-between; font-size: 8pt; color: #555;
-    border-bottom: 1.5px solid #000; padding-bottom: 2mm; }
-  h1 { font-size: 14pt; margin: 3mm 0 1mm; }
-  .frage { font-size: 11.5pt; font-weight: 700; margin: 3mm 0 0; padding: 3mm 4mm;
-    border: 1.5px solid #000; border-radius: 2mm; }
-  h2 { font-size: 9.5pt; margin: 3.2mm 0 1mm; text-transform: uppercase; letter-spacing: .08em; }
+  .kopf { display: flex; justify-content: space-between; font-size: 9pt; border-bottom: 1px solid #000;
+    padding-bottom: 1.5mm; }
+  h1 { font-size: 18pt; margin: 2.5mm 0 1.5mm; }
+  .frage { font-size: 11.5pt; font-weight: 700; border: 1px solid #000; padding: 2mm 3mm; }
+  h2 { font-size: 10.5pt; margin: 2.2mm 0 .8mm; }
+  p { margin: 0; }
+  ul, ol { margin: 0; padding-left: 5mm; }
+  li { margin-bottom: .4mm; }
+
+  .spalten { display: flex; gap: 7mm; }
+  .spalten > div { flex: 1; }
+
   dl { margin: 0; }
-  dt { font-weight: 700; }
-  dd { margin: 0 0 .8mm; }
+  dt { font-weight: 700; display: inline; }
+  dd { display: inline; margin: 0; }
+  dd::after { content: ""; display: block; margin-bottom: .6mm; }
 
-  table { width: 100%; border-collapse: collapse; font-size: 8pt; }
-  .text { margin: 0; }
-  th, td { border: 1px solid #000; padding: 1.5mm 2mm; text-align: left; vertical-align: top; }
-  th { background: #eee; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.6pt; }
+  th, td { border: 1px solid #000; padding: 1mm 1.6mm; text-align: left; vertical-align: top; }
 
-  .meinung { padding: 3mm 4mm; background: #f0f0f0; border-radius: 2mm; }
-  .quellen { margin-top: auto; font-size: 7pt; color: #444; padding-top: 3mm; }
-  .quellen ol { margin: 1mm 0 0; padding-left: 4mm; }
+  .quellen { margin-top: auto; font-size: 6.5pt; line-height: 1.15; border-top: 1px solid #000; padding-top: 1.8mm; }
+  .quellen ol { padding-left: 4.5mm; columns: 2; column-gap: 6mm; }
+  .quellen li { break-inside: avoid; margin-bottom: .5mm; overflow-wrap: anywhere; }
 
   @media print {
     html, body { background: #fff; }
-    .blatt { margin: 0; box-shadow: none; }
-    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .handout { margin: 0; box-shadow: none; }
   }
-
-
-  /* Schlichter Look wie aus Word/Writer: Calibri, schwarz auf weiß, keine runden Ecken */
-  .handout { font-family: Calibri, Carlito, "Liberation Sans", Arial, sans-serif; font-size: 10pt;
-    line-height: 1.25; color: #000; background: #fff; }
-  .kopf { color: #000; border-bottom: 1px solid #000; }
-  h1 { font-size: 18pt; margin: 3mm 0 1mm; }
-  h2 { font-size: 11.5pt; text-transform: none; letter-spacing: 0; margin: 2.6mm 0 1mm; }
-  .frage { font-size: 11pt; border: 1px solid #000; border-radius: 0; padding: 2mm 3mm; }
-  th { background: none; }
-  .meinung { background: none; border-radius: 0; padding: 0; }
 </style>
 </head>
 <body>
-<div class="blatt"></div>
+<div class="handout">
+  <div class="kopf"><span>Religion – Referat über ein ethisches Thema</span><span>Janosch &amp; Ferdinand · Oktober 2026</span></div>
+  <h1>KI bremsen?</h1>
+  <div class="frage">Sollte die Entwicklung immer stärkerer KI gebremst werden?</div>
 
-<template id="vorlage">
-  <div class="handout">
-    <div class="kopf"><span>Religion – Referat</span><span>Namen: ______________________</span></div>
-    <h1>KI bremsen?</h1>
-    <div class="frage">Sollte die Entwicklung immer stärkerer KI gebremst werden?</div>
-
-    <h2>Kontroverse und Aktualität</h2>
-    <p class="text">Am 12.09.2026 fordert Anthropic-Chef Dario Amodei, die Entwicklung der stärksten KI-Modelle zu bremsen („We Must Pace the Frontier“). OpenAI, xAI und Microsoft stimmen zu, bringen 10 Tage später aber trotzdem neue Modelle heraus.
-    <b>Streitpunkt:</b> Fortschritt und Wettbewerb gegen Sicherheit und Kontrolle. Wenige Firmen entscheiden über ein Risiko, das alle betrifft.</p>
-
-    <h2>Begriffe</h2>
-    <dl>
-      <dt>Frontier-Modell</dt>
-      <dd>eines der stärksten KI-Modelle an der Spitze der Entwicklung</dd>
-      <dt>Pacing</dt>
-      <dd>das Entwicklungstempo drosseln, ohne ganz zu stoppen</dd>
-      <dt>Regulatory Capture</dt>
-      <dd>große Firmen beeinflussen Gesetze so, dass sie selbst davon profitieren</dd>
-    </dl>
-
-    <h2>Vier Sichtweisen</h2>
-    <table>
-      <tr><th>Wirtschaft</th><th>Europa</th><th>USA</th><th>China</th></tr>
-      <tr><td>Bremsen, aber nicht stoppen; externe Prüfer in den Firmen</td><td>Erst aufholen, sonst bleiben USA und China dauerhaft vorne</td><td>Keine Gesetze, Firmen sollen selbst bremsen</td><td>Bremst nicht; schlägt eigene „Global AI Governance“ zu eigenen Bedingungen vor</td></tr>
-      <tr><td><i>Werte:</i> Sicherheit, Marktmacht</td><td><i>Werte:</i> Gerechtigkeit, Unabhängigkeit</td><td><i>Werte:</i> Freiheit, Wettbewerb</td><td><i>Werte:</i> Stärke, Souveränität</td></tr>
-    </table>
-
-    <h2>Unser Urteil</h2>
-    <div class="meinung">
-      <b>Bremsen an der Spitze, nicht bei den Aufholern.</b><br>
-      <i>Werte:</i> Sicherheit und Unabhängigkeit<br>
-      <i>Norm:</i> Spitzenmodelle erst nach Prüfung durch unabhängige, internationale Prüfer veröffentlichen.<br>
-      <i>Begründung:</i> KI wird extrem schnell besser, deshalb braucht es Kontrolle. Eine Bremse für alle würde aber den Vorsprung von USA und China festschreiben. Nur die Spitze zu kontrollieren schützt beide Werte.
-    </div>
-
-    <div class="quellen">
-      <b>Quellen</b>
+  <div class="spalten">
+    <div>
+      <h2>Gliederung</h2>
       <ol>
-        <li>D. Amodei: „We Must Pace the Frontier“, 12.09.2026, darioamodei.com</li>
-        <li>skill-sprinters.de: „Anthropic-Chef Amodei will das Tempo der KI-Entwicklung drosseln …“, 13.09.2026</li>
-        <li>CNBC: „Trump rejects AI regulation calls, slams Anthropic CEO Dario Amodei“, 14.09.2026</li>
-        <li>Reuters: „Europe's AI firms, playing catch-up, challenge US calls for slowdown“, 09/2026</li>
+        <li>Einstieg: Spaghetti-Video &amp; Amodei-Artikel</li>
+        <li>Aktueller Anlass: „We Must Pace the Frontier“</li>
+        <li>Die Grundfrage: Vollgas oder Bremsen?</li>
+        <li>Was auf dem Spiel steht</li>
+        <li>Vier Positionen: Wirtschaft, Europa, USA, China</li>
+        <li>Unser Urteil und wie wir dazu kamen</li>
+        <li>Diskussion</li>
       </ol>
     </div>
+    <div>
+      <h2>Begriffe</h2>
+      <dl>
+        <dt>Frontier-Modell:</dt> <dd>eines der stärksten KI-Modelle an der Spitze der Entwicklung</dd>
+        <dt>Pacing:</dt> <dd>das Entwicklungstempo drosseln, ohne ganz zu stoppen</dd>
+        <dt>Regulatory Capture:</dt> <dd>große Firmen beeinflussen Regeln so, dass nur sie selbst sie erfüllen können</dd>
+        <dt>Risikokapital:</dt> <dd>Geld von Investoren für junge Firmen, in Erwartung schnellen Wachstums</dd>
+      </dl>
+    </div>
   </div>
-</template>
 
-<script>
-  // Das Handout zweimal auf das Blatt setzen
-  const blatt = document.querySelector('.blatt');
-  const vorlage = document.getElementById('vorlage');
-  blatt.append(vorlage.content.cloneNode(true), vorlage.content.cloneNode(true));
-</script>
+  <h2>Aktueller Anlass und Widerspruch</h2>
+  <ul>
+    <li><b>12.09.2026:</b> Anthropic-Chef Dario Amodei fordert, die stärksten KI-Modelle langsamer wachsen zu lassen: externe Prüfer in den Firmen, Gesetze für alle Spitzen-KI-Firmen der USA, weltweite Absprachen (auch mit China). OpenAI, xAI und Microsoft stimmen zu.</li>
+    <li><b>22.09.2026:</b> Anthropic (Claude Opus 5.5) und OpenAI (GPT-6 Sol/Luna) bringen trotzdem neue Top-Modelle heraus. Beide planen ihren Börsengang, Bremsen passt nicht zur Wachstumsstory.</li>
+  </ul>
+
+  <h2>Die Grundfrage: ein Wertekonflikt</h2>
+  <table>
+    <tr><th style="width:50%">Vollgas</th><th>Bremsen</th></tr>
+    <tr><td>Fortschritt (Medizin, Forschung), Wohlstand, Wettbewerb, „sonst baut es China“</td>
+        <td>Sicherheit und Kontrolle, Verantwortung für die Zukunft, Folgen sind nicht umkehrbar</td></tr>
+  </table>
+  <p style="margin-top:1.2mm"><b>Was auf dem Spiel steht:</b> Deepfakes &amp; Desinformation, autonome Waffen, Kontrollverlust, Jobverlust. Problem: Wenige Firmen entscheiden über ein Risiko, das <b>alle</b> betrifft.</p>
+
+  <h2>Vier Positionen</h2>
+  <table>
+    <tr><th style="width:17%">Position</th><th>Kernaussage</th><th style="width:24%">Werte</th></tr>
+    <tr><td><b>Wirtschaft</b></td><td>„Nicht bremsen, das kann sich niemand leisten.“ Hunderte Milliarden stecken in KI. Bremsen schreckt Investoren ab, die Blase platzt (vgl. Dot-com-Crash 2000). Das Geld kreist zwischen Nvidia, OpenAI und Oracle, darum bremst niemand freiwillig.</td><td>Wohlstand, Stabilität, Wachstum</td></tr>
+    <tr><td><b>Europa</b></td><td>„Erst aufholen, dann bremsen.“ Europa hat kaum eigene Spitzenmodelle (Mistral, Black Forest Labs). USA 77 % vs. Europa 11 % des weltweiten KI-Risikokapitals (2023, Prosus). Mistral Large 4 liegt im Intelligence Index 34 % unter der Spitze. Eine Bremse jetzt würde den Vorsprung festschreiben.</td><td>Gerechtigkeit, Chancengleichheit, Unabhängigkeit</td></tr>
+    <tr><td><b>USA (Regierung)</b></td><td>„Keine Gesetze, das ist nur Taktik.“ Trump lehnt Regulierung ab, KI-Berater David Sacks: „Ihr seid die Frontier“, die Firmen sollen also selbst bremsen. Vorwurf Regulatory Capture. China mache sowieso nicht mit.</td><td>Freiheit, Wettbewerb, nationale Stärke</td></tr>
+    <tr><td><b>China</b></td><td>„Wir bremsen nicht, schon gar nicht auf Zuruf.“ KI ist nationale Priorität, „Pacing“ gilt als Versuch der USA, ihren Vorsprung einzufrieren. Eigener Vorschlag: „Global AI Governance Initiative“, also Zusammenarbeit zu eigenen Bedingungen.</td><td>Souveränität, technologische Unabhängigkeit</td></tr>
+  </table>
+
+  <h2>Unser Urteil: „Bremsen an der Spitze, nicht bei den Aufholern“</h2>
+  <p><b>Werte:</b> Sicherheit und Unabhängigkeit<br>
+  <b>Norm:</b> Die stärksten KI-Modelle dürfen erst veröffentlicht werden, wenn unabhängige, internationale Prüfer sie getestet haben. Das gilt für alle Spitzenmodelle, egal aus welchem Land.<br>
+  <b>Begründung:</b> KI wird extrem schnell besser, deshalb braucht es Kontrolle. Eine Bremse für alle würde aber den Vorsprung von USA und China festschreiben und Europa abhängig machen. Nur das Tempo an der Spitze zu kontrollieren schützt beide Werte. Gegen das Argument „China macht nicht mit“ müssen die Prüfer international sein.</p>
+
+  <h2>Diskussion</h2>
+  <p>Würdet ihr die Entwicklung immer stärkerer KI bremsen?</p>
+
+  <div class="quellen">
+    <b>Quellen</b>
+    <ol>
+      <li>D. Amodei: „We Must Pace the Frontier“, 12.09.2026. darioamodei.com/post/we-must-pace-the-frontier</li>
+      <li>skill-sprinters.de: „Anthropic-Chef Amodei will das Tempo der KI-Entwicklung drosseln …“, 13.09.2026. skill-sprinters.de/blog/news/amodei-tempo-ki-entwicklung-externe-pruefer-2026</li>
+      <li>MarkTechPost: „Anthropic's 3-Step 'Pace the Frontier' Plan Wins OpenAI, xAI and Microsoft Support“, 13.09.2026. marktechpost.com</li>
+      <li>S. Altman, Post auf X, 13.09.2026. x.com/sama/status/2099348812305473766</li>
+      <li>The Register: „Frontier AI keeps racing despite calls to slow down“, 23.09.2026. theregister.com</li>
+      <li>CNBC: „Trump rejects AI regulation calls, slams Anthropic CEO Dario Amodei“, 14.09.2026. cnbc.com</li>
+      <li>CNBC: „Anthropic is AI trade's last big hope for a major IPO this year“, 19.10.2026. cnbc.com</li>
+      <li>Dealroom: „David Sacks to Altman and Amodei: pace the frontier yourselves“, 13.09.2026. dealroom.co/news</li>
+      <li>Reuters (via Investing.com): „Europe's AI firms, playing catch-up, challenge US calls for slowdown“, 18.09.2026</li>
+      <li>Cryptopolitan: „Europe's AI firms warn a frontier slowdown would lock in the US lead“, 18.09.2026 (Zahlen: Prosus)</li>
+      <li>Artificial Analysis: Intelligence Index, abgerufen 10/2026. artificialanalysis.ai/leaderboards/models</li>
+      <li>Dig.watch: „China rejects Anthropic AI pacing“, 14.09.2026. dig.watch/updates/china-rejects-anthropic-ai-pacing</li>
+      <li>China: „Global AI Governance Initiative“, 18.10.2023. china-embassy.gov.cn</li>
+      <li>Reddit r/GenAI4all: „Comparison AI of Will Smith eating spaghetti“. reddit.com/r/GenAI4all/comments/1r3lxux</li>
+    </ol>
+  </div>
+</div>
 </body>
 </html>
